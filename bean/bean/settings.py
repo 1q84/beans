@@ -1,3 +1,4 @@
+#-*-coding:utf-8-*-
 # Django settings for bean project.
 
 DEBUG = True
@@ -24,11 +25,11 @@ DATABASES = {
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-cn'
 
 SITE_ID = 1
 
@@ -61,6 +62,7 @@ STATIC_ROOT = ''
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -69,6 +71,8 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     "/Users/seaeast/newage/python/play/beans/bean/static/",
 )
+GRAPPELLI_ADMIN_TITLE = '博客管理后台'
+
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -116,11 +120,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'blog',
+    'todo',
+    'sblog',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -151,3 +158,10 @@ LOGGING = {
         },
     }
 }
+import logging
+logging.basicConfig(
+    level = logging.DEBUG,
+    format = '%(asctime)s %(levelname)s %(message)s',
+    filename = '/tmp/myapp.log',
+    filemode = 'w'
+)
